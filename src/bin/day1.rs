@@ -75,3 +75,13 @@ fn part2(input: &[(Dir, i32)]) -> i32 {
         })
         .1
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_from_str_fail() {
+        assert!("X".parse::<Dir>().is_err());
+    }
+}
