@@ -1,0 +1,22 @@
+use paste::paste;
+macro_rules! solution_day {
+    ($day:ident,$part1:expr,$part2:expr) => {
+        paste! {
+            #[test]
+            fn [<solution_ $day>]() {
+            use assert_cmd::prelude::*;
+            use assert_cmd::cargo::cargo_bin_cmd;
+
+            cargo_bin_cmd!(stringify!($day))
+                .pipe_stdin(format!("inputs/{}/input", stringify!($day)))
+                .unwrap()
+                .unwrap()
+                .assert()
+                .success()
+                .stdout(concat!($part1, "\n", $part2, "\n"));
+            }
+        }
+    };
+}
+
+solution_day!(day1, "1172", "6932");
