@@ -8,7 +8,7 @@ macro_rules! solution_day {
             use assert_cmd::cargo::cargo_bin_cmd;
 
             cargo_bin_cmd!(stringify!($day))
-                .pipe_stdin(format!("inputs/{}/input", stringify!($day)))
+                .pipe_stdin(format!("inputs/{}/input.txt", stringify!($day)))
                 .unwrap()
                 .unwrap()
                 .assert()
@@ -20,3 +20,4 @@ macro_rules! solution_day {
 }
 
 solution_day!(day1, "1172", "6932");
+solution_day!(day2, "38437576669", "49046150754");
